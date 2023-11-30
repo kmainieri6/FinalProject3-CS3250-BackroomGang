@@ -24,6 +24,7 @@ class Playlist(db.Model):
 
     id = db.Column(db.String, primary_key=True) # playlist id
     name = db.Column(db.String, unique=False, nullable=False) # playlist name
+    description = db.Column(db.String) # description of playlist
     creation_date = db.Column(db.String) # date of creation
     creator_name = db.Column(db.String) # creator id
     quantity = db.Column(db.Integer) # number of videos in playlist

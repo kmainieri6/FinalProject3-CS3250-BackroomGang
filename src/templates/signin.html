@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div style = "text-align: center">
+    <h1>Sign In Page</h1>
+    <p>Please enter your ID and Password</p>
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+    <p>Not registered? <a href="{{ url_for('users_signup') }}">Sign Up</a></p>
+        <form action="" method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <p>{{ form.id.label }} <br> {{ form.id(size=15) }}</p>
+            <p>{{ form.passwd.label }} <br> {{ form.passwd(size=30) }}</p>
+            <p>{{ form.submit() }}</p>
+        </form>
+{% endblock %}
