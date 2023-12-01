@@ -1,1 +1,43 @@
-TODO - IMPLEMENT ME
+{% extends 'base.html' %}
+{% block main %}
+    <p>{{ current_user.id }}'s Playlists</p> <!-- The purpose of this line is to show the user's name and the current list of orders -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Playlist Name</th>
+            <th>Creation Date</th>
+            <th>Creator Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>View Videos Inside Playlist</th>
+        </tr>
+        {% for playlist in playlists %}
+            {% if loop.index % 2 == 0 %}
+                <tr class="even_row">
+            {% else %}
+                <tr class="odd_row">
+            {% endif %}
+                    <td>{{ playlist.id }}</td>
+                    <td>{{ playlist.name }}</td>
+                    <td>{{ playlist.creation_date }}</td>
+                    <td>{{ playlist.creator_name }}</td>
+                    <td>{{ playlist.description }}</td>
+                    <td>{{ playlist.quantity }}</td>
+                </tr>
+        {% endfor %}
+    </table>
+    <p />
+    <button type="button" class="button" onclick="simple_action('{{ url_for('users_signout') }}')">Sign Out</button>
+</div>
+<script type="text/javascript">
+    function simple_action(target) {
+        window.location = target;
+    }
+
+    function confirmed_action(target) {
+        if (confirm('Are you sure?')) {
+            window.location = target;
+        }
+    }
+</script>
+{% endblock %}
