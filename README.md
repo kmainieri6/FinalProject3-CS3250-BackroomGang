@@ -10,15 +10,15 @@ The deadline for this project is December 7, 2023. The development framework fol
 
 ### UML Use Case Design
 
-*Insert UML Use Case Diagram here*
+![UML Use Case Diagram](pics/UseCaseDiagram1.png)
 
 ### Sequence Diagram
 
-*Insert Sequence Diagram here*
+![User Story #4 Sequence Diagram](pics/SequenceDiagram.png)
 
 ### Class Diagram
 
-*Insert Class Diagram here*
+![Class Diagram](pics/ClassDiagram2.png)
 
 ## User Stories
 
