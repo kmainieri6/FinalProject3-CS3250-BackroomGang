@@ -33,7 +33,7 @@ class PlaylistForm(FlaskForm):
     """ This class is meant for implementing the playlist form for the application """
     id = StringField('ID', validators=[DataRequired()]) # playlist id
     name = StringField('Name', validators=[DataRequired()]) # playlist name
-    creation_date = StringField('Creation Date', validators=[DataRequired()]) # date of creation
+    creation_date = DateField('Creation Date', validators=[DataRequired()]) # date of creation
     creator_name = StringField('Creator Name', validators=[DataRequired()]) # creator id
     description = TextAreaField('Description', validators=[DataRequired()]) # description of playlist
     quantity = IntegerField('Quantity', validators=[DataRequired()]) # number of videos in playlist

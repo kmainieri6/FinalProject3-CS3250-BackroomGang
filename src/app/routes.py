@@ -6,7 +6,7 @@ Group Name: Backroom Gang
 
 '''
 
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, session
 from app import app, db
 # Make the forms.py file and import the forms from it
 from app.forms import RegistrationForm, LoginForm, PlaylistForm, VideoForm
@@ -102,7 +102,43 @@ def view_playlists():
 @login_required
 def create_playlists():
     """ This function is meant for implementing the create playlist route for the application """
-    pass
+    form = PlaylistForm()
+    
+    ##Testing for database adding
+    #id = [] #Holding ids(?)
+    #name = [] #Holding names(?)
+    #creation_date = [] #Holding the creation date of playlist(?)
+    #creator = [] #Author(?) is this correct for Datebases?
+    #description = [] #For database sessions(?)
+    #quantity = [] #For database quantity
+    
+    
+    if form.validate_on_submit():
+        {
+        'id': form.id.data,
+        'name': form.name.data,
+        'creation date': form.creation_date.data,
+        'creator': form.creator_name.data,
+        'description': form.description.data,
+        'quantity': form.quantity.data,
+        }
+        #session['id'] = id
+        #session['name'] = name
+        #session['creation date'] = creation_date
+        #session['creator'] = creator
+        #session['description'] = description
+        #session['quantity'] = quantity
+        
+        #db.session.add()
+        #db.session.commit()
+        
+    ##Enter Playlist from Models
+    return render_template('add_playlist.html',form=form)      
+    
+    
+
+    
+    
 
 # TODO 5: Implement User Story 3: View Videos in a Playlist (Refer to one of the previous homeworks when viewing all of the items for this)
 
@@ -111,6 +147,9 @@ def create_playlists():
 @login_required
 def view_playlists_videos(playlist_id):
     """ This function is meant for implementing the view videos in playlist route for the application """
+    
+    
+
     pass
 
 # TODO 6: Implement User Story 4: Adding videos to a playlist
@@ -120,6 +159,11 @@ def view_playlists_videos(playlist_id):
 @login_required
 def add_playlists_video(playlist_id):
     """ This function is meant for implementing the add videos to playlist route for the application """
+    
+    form = VideoForm()
+    #Enter in Video Desc. from Models
+    return render_template('add_video.html')
+
     pass
 
 # TODO 7: Implement User Story 5: Deleting videos from a playlist(Refer to Homework 3 when deleting an invoice item for this)
