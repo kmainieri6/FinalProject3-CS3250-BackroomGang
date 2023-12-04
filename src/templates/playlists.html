@@ -3,7 +3,7 @@
     <p>{{ current_user.id }}'s Playlists</p> <!-- The purpose of this line is to show the user's name and the current list of orders -->
     <table>
         <tr>
-            <th>ID</th>
+            <th>ID#</th>
             <th>Playlist Name</th>
             <th>Creation Date</th>
             <th>Creator Name</th>
@@ -23,11 +23,11 @@
                     <td>{{ playlist.creator_name }}</td>
                     <td>{{ playlist.description }}</td>
                     <td>{{ playlist.quantity }}</td>
+                    <td><button type="button" onclick="simple_action('{{ url_for('view_playlists_videos', playlist_id=playlist.id) }}')">View Videos</button></td>
                 </tr>
         {% endfor %}
     </table>
     <p />
-    <button type="button" class="button" onclick="simple_action('{{ url_for('users_signout') }}')">Sign Out</button>
 </div>
 <script type="text/javascript">
     function simple_action(target) {

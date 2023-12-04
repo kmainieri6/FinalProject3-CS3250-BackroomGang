@@ -31,9 +31,9 @@ class LoginForm(FlaskForm):
 # TODO 3: Implement User Story 3: Create a Playlist (USE INVOICE FORM FROM PREVIOUS PROJECTS BUT MODIFY IT TO FIT THIS PROJECT BY USING THE CLASS DIAGRAM) 
 class PlaylistForm(FlaskForm):
     """ This class is meant for implementing the playlist form for the application """
-    id = StringField('ID', validators=[DataRequired()]) # playlist id
-    name = StringField('Name', validators=[DataRequired()]) # playlist name
-    creation_date = StringField('Creation Date', validators=[DataRequired()]) # date of creation
+    # id = IntegerField('ID#', validators=[DataRequired()]) # playlist id
+    name = StringField('Playlist Name', validators=[DataRequired()]) # playlist name
+    creation_date = DateField('Creation Date', validators=[DataRequired()]) # date of creation
     creator_name = StringField('Creator Name', validators=[DataRequired()]) # creator id
     description = TextAreaField('Description', validators=[DataRequired()]) # description of playlist
     quantity = IntegerField('Quantity', validators=[DataRequired()]) # number of videos in playlist
@@ -42,8 +42,8 @@ class PlaylistForm(FlaskForm):
 # TODO 4: Implement User Story 3: Add a Video to a Playlist (USE ITEM FORM FROM PREVIOUS PROJECTS BUT MODIFY IT TO FIT THIS PROJECT BY USING THE CLASS DIAGRAM)
 class VideoForm(FlaskForm):
     """ This class is meant for implementing the video form for the application """
-    id = StringField('ID', validators=[DataRequired()]) # video id
-    name = StringField('Name', validators=[DataRequired()]) # video name
+    name = StringField('Video Title', validators=[DataRequired()]) # video name
     url = StringField('URL', validators=[DataRequired()]) # url of video
+    length = StringField('Length', validators=[DataRequired()]) # length of video
     submit = SubmitField('Add Video')
 

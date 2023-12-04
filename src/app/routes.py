@@ -102,7 +102,14 @@ def view_playlists():
 @login_required
 def create_playlists():
     """ This function is meant for implementing the create playlist route for the application """
-    pass
+    form = PlaylistForm() # Create an instance of the PlaylistForm class
+    if form.validate_on_submit(): # If the form is validated
+        playlist = Playlist(name=form.name.data, description=form.description.data, creation_date=form.creation_date.data, creator_name=form.creator_name.data, quantity=form.quantity.data, users_id=current_user.id)
+        db.session.add(playlist) # Add the playlist to the database
+        db.session.commit()
+        flash('You have successfully created a playlist!', 'success')
+        return redirect(url_for('view_playlists'))
+    return render_template('add_playlist.html', title='Create Playlist', form=form)
 
 # TODO 5: Implement User Story 3: View Videos in a Playlist (Refer to one of the previous homeworks when viewing all of the items for this)
 
@@ -111,14 +118,16 @@ def create_playlists():
 @login_required
 def view_playlists_videos(playlist_id):
     """ This function is meant for implementing the view videos in playlist route for the application """
-    pass
+    playlist = Playlist.query.filter_by(id=playlist_id).first() # Get the playlist from the database
+    videos = Video.query.filter_by(playlist_id=playlist_id).all() # Get all of the videos from the database
+    return render_template('videos.html', title='Videos', playlist=playlist, videos=videos) # Render the videos.html template and pass the playlist and videos to it
 
 # TODO 6: Implement User Story 4: Adding videos to a playlist
 
 
 @app.route('/playlists/<playlist_id>/videos/add', methods=['GET', 'POST'])
 @login_required
-def add_playlists_video(playlist_id):
+def add_playlists_video():
     """ This function is meant for implementing the add videos to playlist route for the application """
     pass
 
@@ -127,7 +136,7 @@ def add_playlists_video(playlist_id):
 
 @app.route('/playlists/<playlist_id>/<video_id>/delete', methods=['GET', 'POST'])
 @login_required
-def delete_playlists_video(video_id):
+def delete_playlists_video():
     """ This function is meant for implementing the delete a video from playlist route for the application """
     pass
 
@@ -136,6 +145,6 @@ def delete_playlists_video(video_id):
 
 @app.route('/playlists/<playlist_id>/delete', methods=['GET', 'POST'])
 @login_required
-def delete_playlists(playlist_id):
+def delete_playlists():
     """ This function is meant for implementing the delete playlist route for the application """
     pass

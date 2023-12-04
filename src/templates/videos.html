@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h2>{{ playlist.name }}'s Videos</h2>
+    <table>
+        <tr>
+            <th>ID#</th>
+            <th>Video Title</th>
+            <th>URL</th>
+            <th>Duration</th>
+        </tr>
+        {% for video in videos %}
+            {% if loop.index % 2 == 0 %}
+                <tr class="even_row">
+            {% else %}
+                <tr class="odd_row">
+            {% endif %}
+                    <td>{{ video.id }}</td>
+                    <td>{{ video.name }}</td>
+                    <td>{{ video.url }}</td>
+                    <td>{{ video.duration }}</td>
+                </tr>
+        {% endfor %}
+    </table>
+    <p />
+</div>
+<script type="text/javascript">
+    function simple_action(target) {
+        window.location = target;
+    }
+
+    function confirmed_action(target) {
+        if (confirm('Are you sure?')) {
+            window.location = target;
+        }
+    }
+</script>
+{% endblock %}

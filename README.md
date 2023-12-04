@@ -18,7 +18,7 @@ The deadline for this project is December 7, 2023. The development framework fol
 
 ### Class Diagram
 
-![Class Diagram](pics/ClassDiagram2.png)
+![Class Diagram](pics/ClassDiagram3.png)
 
 ## User Stories
 
