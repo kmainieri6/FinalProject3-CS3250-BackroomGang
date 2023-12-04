@@ -22,11 +22,12 @@ class User(db.Model, UserMixin):
 class Playlist(db.Model):
     __tablename__ = "playlists"
 
-    id = db.Column(db.String, primary_key=True) # playlist id
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True) # playlist id
     name = db.Column(db.String, unique=False, nullable=False) # playlist name
+    description = db.Column(db.String) # description of playlist
     creation_date = db.Column(db.String) # date of creation
     creator_name = db.Column(db.String) # creator id
-    quantity = db.Column(db.Integer) # number of videos in playlist
+    quantity = db.Column(db.Integer, default=0) # number of videos in playlist
 
     users_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=False) # user id
     videos = db.relationship('Video', cascade="all,delete", backref='playlist', lazy=True) # videos in playlist, cascade deletes all videos in playlist when playlist is deleted
@@ -34,9 +35,10 @@ class Playlist(db.Model):
 class Video(db.Model):
     __tablename__ = "videos"
 
-    id = db.Column(db.String, primary_key=True) # video id
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True) # video id
     name = db.Column(db.String, unique=False, nullable=False) # video name
     url = db.Column(db.String) # url of video
+    length = db.Column(db.String) # length of video
 
     playlist_id = db.Column(db.String, db.ForeignKey('playlists.id'), nullable=False) # playlist id
     
