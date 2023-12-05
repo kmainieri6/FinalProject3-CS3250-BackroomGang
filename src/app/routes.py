@@ -123,7 +123,46 @@ def view_playlists_videos(playlist_id):
     return render_template('videos.html', title='Videos', playlist=playlist, videos=videos) # Render the videos.html template and pass the playlist and videos to it
 
 # TODO 6: Implement User Story 4: Adding videos to a playlist
+# Incomplete
+class Video:
+    def_init__(self, title, length, link):
+    self.title = title
+    self.length = length
+    self.link = link
 
+class Playlist:
+    def __init__(self,name):
+        self.name = name
+        self.videos = []
+    
+    def add_video(self, video):
+        self.videos/append(video)
+
+    def create_video():
+        title = input("Enter the video title: ")
+        length = input("Enter the video length: ")
+        link = input("Enter the video link: ")
+        return Video(title, length, link)
+    
+def add_video_to_playlist(playlist, video):
+    playlist.add_video(video)
+    print(f"Video '{video.title}' added to the playlist '{playlist.name}'. ")
+
+def main():
+    # User login
+    user_logged_in = True
+    
+    if user_logged_in:
+        # User selecting a playlist
+        playlist_name = input("Enter the name of the playlist: ")
+        playlist = Playlist(playlist_name)
+
+        # User adding a video
+        new_video = create_video()
+        add_video_to_playlist(playlist, new_video)
+
+    if __name__ == "__main__":
+        main()
 
 @app.route('/playlists/<playlist_id>/videos/add', methods=['GET', 'POST'])
 @login_required
